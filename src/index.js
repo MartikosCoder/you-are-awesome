@@ -13,7 +13,9 @@ const getDeepPropertiesCount = (obj) => {
     return JSON.stringify(obj).match(/[^\\]":/g).length;
 };
 
-const createSerializedObject = () => {};
+const createSerializedObject = () => {
+    return null;
+};
 const toBuffer = () => {};
 const sortByProto = () => {};
 
