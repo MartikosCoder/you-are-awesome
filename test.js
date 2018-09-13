@@ -35,13 +35,10 @@ describe(('You are awesome, aren\'t you?'), () => {
     const property = createNotEnumerableProperty(propertyName);
     const object = {};
 
-    Object.defineProperty(object, propertyName, {
-        enumerable: false,
-        value: propertyValue
-    });
+    object[property] = propertyValue;
 
     assert.equal(Object.keys(object).length, 0);
-    assert.equal(object[Object.getOwnPropertyNames(object)], propertyValue);
+    assert.equal(object[property], propertyValue);
   });
 
   it('createProtoMagicObject', () => {
