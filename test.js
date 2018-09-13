@@ -35,10 +35,13 @@ describe(('You are awesome, aren\'t you?'), () => {
     const property = createNotEnumerableProperty(propertyName);
     const object = {};
 
-    object[property] = propertyValue;
+    Object.defineProperty(object, propertyName, {
+        enumerable: false,
+        value: propertyValue
+    });
 
     assert.equal(Object.keys(object).length, 0);
-    assert.equal(object[property], propertyValue);
+    assert.equal(object[Object.getOwnPropertyNames(object)], propertyValue);
   });
 
   it('createProtoMagicObject', () => {
@@ -117,7 +120,7 @@ describe(('You are awesome, aren\'t you?'), () => {
           done();
         }
       }
-    }, 100); 
+    }, 100);
   });
 
   it('getDeepPropertiesCount', () => {
@@ -171,7 +174,7 @@ describe(('You are awesome, aren\'t you?'), () => {
     e.__proto__ = f;
     f.__proto__ = g;
     g.__proto__ = h;
-    
+
     let arr = sortByProto([d, b, h, a]);
     assert.deepEqual(arr, [a, b, d, h]);
 
