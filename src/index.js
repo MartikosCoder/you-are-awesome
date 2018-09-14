@@ -6,8 +6,16 @@ const createProtoMagicObject = () => {
     return Function;
 };
 
+var a_counter = 0;
+
 const incrementor = () => {};
-const asyncIncrementor = () => {};
+const asyncIncrementor = () => {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(++a_counter);
+        }, 100);
+    });
+};
 
 const createIncrementer = () => {
     return {
