@@ -8,7 +8,26 @@ const createProtoMagicObject = () => {
 
 const incrementor = () => {};
 const asyncIncrementor = () => {};
-const createIncrementer = () => {};
+
+const createIncrementer = () => {
+    return {
+        value: 0,
+
+        next: function() {
+            this.value++;
+
+            return this;
+        },
+
+        [Symbol.iterator]: function * () {
+            for (let key in this) {
+                this.next();
+
+                yield this.value; // yield [key, value] pair
+            }
+        }
+    }
+};
 
 // return same argument not earlier than in one second, and not later, than in two
 const returnBackInSecond = (param) => {
