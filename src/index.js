@@ -1,14 +1,20 @@
 // DO WHATEVER YOU WANT HERE
-const createEnumerableProperty = (propname) => {};
-const createNotEnumerableProperty = (propname) => {};
+const createEnumerableProperty = (propname) => {
+    return propname;
+};
+const createNotEnumerableProperty = (propname) => {
+    return Symbol(propname);
+};
 
 const createProtoMagicObject = () => {
     return Function;
 };
 
 var a_counter = 0;
+var i_counter = 0;
 
 const incrementor = () => {};
+
 const asyncIncrementor = () => {
     return new Promise(resolve => {
         setTimeout(() => {
