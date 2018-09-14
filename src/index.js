@@ -46,7 +46,9 @@ const createSerializedObject = () => {
     return null;
 };
 
-const sortByProto = () => {};
+const sortByProto = (arr) => {
+    return arr.sort();
+};
 
 exports.createEnumerableProperty = createEnumerableProperty;
 exports.createNotEnumerableProperty = createNotEnumerableProperty;
