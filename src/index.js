@@ -11,9 +11,15 @@ const createProtoMagicObject = () => {
 };
 
 var a_counter = 0;
-var i_counter = 0;
+var counter = 0;
 
-const incrementor = () => {};
+const incrementor = () => {
+    counter++;
+    return incrementor;
+};
+incrementor.toString = () => {
+    return counter;
+}
 
 const asyncIncrementor = () => {
     return new Promise(resolve => {
