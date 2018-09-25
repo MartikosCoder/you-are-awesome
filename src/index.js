@@ -1,4 +1,3 @@
-// DO WHATEVER YOU WANT HERE
 const createEnumerableProperty = (propname) => {
     return propname;
 };
@@ -10,8 +9,9 @@ const createProtoMagicObject = () => {
     return Function;
 };
 
-var a_counter = 0;
-var counter = 0;
+// Переменные для счётчиков
+let counter = 0;
+let async_counter = 0;
 
 const incrementor = () => {
     counter++;
@@ -24,8 +24,8 @@ incrementor.toString = () => {
 const asyncIncrementor = () => {
     return new Promise(resolve => {
         setTimeout(() => {
-            resolve(++a_counter);
-        }, 100);
+            resolve(++async_counter);
+        }, 1);
     });
 };
 
@@ -43,13 +43,12 @@ const createIncrementer = () => {
             for (let key in this) {
                 this.next();
 
-                yield this.value; // yield [key, value] pair
+                yield this.value;
             }
         }
     }
 };
 
-// return same argument not earlier than in one second, and not later, than in two
 const returnBackInSecond = (param) => {
     return new Promise(function(resolve, reject) {
         setTimeout(function () {
